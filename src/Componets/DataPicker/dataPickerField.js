@@ -1,8 +1,13 @@
-import {  useField, useFormikContext } from "formik";
+import { useField, useFormikContext } from "formik";
 import DatePicker from "react-date-picker";
 
 const DatePickerField = ({ ...props }) => {
-  const { setFieldValue, errors, touched,setFieldTouched } = useFormikContext();
+  const {
+    setFieldValue,
+    errors,
+    touched,
+    setFieldTouched,
+  } = useFormikContext();
   const [field] = useField(props);
   const { currentlyWork, name } = props;
   return (
@@ -11,15 +16,15 @@ const DatePickerField = ({ ...props }) => {
         {...field}
         {...props}
         className="date_work_experinece"
-        onChangeRaw={e => {
-            setFieldTouched(name, true, true);
+        onChangeRaw={(e) => {
+          setFieldTouched(name, true, true);
         }}
-        selected={(field.value && new Date(field.value)) }
-           onChange={(val) => {
-          currentlyWork 
-            ?( setFieldValue("endDate", new Date())&& setFieldValue("startDate",val))
-            : 
-            setFieldValue(name, val);
+        selected={field.value && new Date(field.value)}
+        onChange={(val) => {
+          currentlyWork
+            ? setFieldValue("startDate", val) &&
+              setFieldValue("endDate", new Date())
+            : setFieldValue("endDate", new Date()) && setFieldValue(name, val);
         }}
       />
       {errors[name] && touched[name] && (

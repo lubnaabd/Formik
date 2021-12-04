@@ -18,7 +18,7 @@ const workExperienceSelectComponent = ({
         onClick={() => setFieldTouched(name, true)}
         className="select_work_experinece"
         placeholder={placeholder}
-        defaultValue={null}
+        defaultValue={placeholder}
         isSearchable={true}
         name={name}
         options={options}
