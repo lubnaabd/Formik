@@ -19,12 +19,19 @@ const workExperienceFormShema = () => {
       otherwise: yup
         .date()
         .required("Please Enter End Date")
-        .min(
-          yup.ref("startDate", "End date should be later than ")
-        ),
-
-      // ),
+        .min(yup.ref("startDate"), "End date should be later than start Date")
     }),
+    reasonOfLeaving: yup.string().when("currentlyWork", {
+      is: true,
+      then: yup.string(),
+      otherwise: yup.string().required("Please Enter Reason Of Leaving "),
+    }),
+    numberEmployees: yup
+      .number()
+      .typeError("Should be Number")
+      .integer()
+      .min(0, "Please Enter more than one")
+      .required("Please Enter Number Of Supervise by you"),
   });
 };
 export default workExperienceFormShema;

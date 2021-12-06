@@ -7,8 +7,7 @@ import FormInput from "./FormInput";
 import DateInput from "./Date/DateInput";
 import FieldDate from "./Date/FieldDate";
 
-const workExperienceForm = ({ errors, touched, values,      handleBlur
-}) => {
+const workExperienceForm = ({ errors, touched, values }) => {
   return (
     <Form>
       <span>Job Detials</span>
@@ -35,7 +34,7 @@ const workExperienceForm = ({ errors, touched, values,      handleBlur
           options={workExperienceStaticData.jobLocationOpeions}
           placeholder="Job Location"
         />
-        <div className="div_date"> 
+        <div className="div_date">
           <FieldDate
             component={DateInput}
             name={"startDate"}
@@ -44,14 +43,16 @@ const workExperienceForm = ({ errors, touched, values,      handleBlur
             errors={errors}
             className="date"
           />
-         {!values.currentlyWork &&  <FieldDate
-            component={DateInput}
-            name={"endDate"}
-            placeholder={"End Date"}
-            touched={touched}
-            errors={errors}
-            className="date"
-          />}
+          {!values.currentlyWork && (
+            <FieldDate
+              component={DateInput}
+              name={"endDate"}
+              placeholder={"End Date"}
+              touched={touched}
+              errors={errors}
+              className="date"
+            />
+          )}
         </div>
         <FormInput
           type={"checkbox"}
@@ -110,6 +111,24 @@ const workExperienceForm = ({ errors, touched, values,      handleBlur
           touched={touched}
           placeholder="Company Sector "
         />
+        <FormInput
+          type="input"
+          name={"numberEmployees"}
+          placeholder={"# of Employees Superives by You"}
+          touched={touched}
+          className="input"
+          errors={errors}
+        />
+        {!values.currentlyWork && (
+          <FormInput
+            type="input"
+            name={"reasonOfLeaving"}
+            placeholder={"Reason Of Leaving"}
+            touched={touched}
+            className="input"
+            errors={errors}
+          />
+        )}
       </div>
       <button type={"submit"} className="btn_submit">
         Save
