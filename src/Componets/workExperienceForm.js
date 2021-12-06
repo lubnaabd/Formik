@@ -2,13 +2,15 @@ import React from "react";
 import workExperienceSelectComponent from "./workExperienceReactSelect/workExperienceSelectComponent";
 import WorkExperienceSelect from "./workExperienceReactSelect/workExperienceSelect";
 import workExperienceStaticData from "./StaticData/staticData";
-import DatePickerField from "./DataPicker/dataPickerField";
 import { Form } from "formik";
 import FormInput from "./FormInput";
+import DateInput from "./Date/DateInput";
+import FieldDate from "./Date/FieldDate";
 
-const workExperienceForm = ({ errors, touched, values }) => {
+const workExperienceForm = ({ errors, touched, values,      handleBlur
+}) => {
   return (
-    <Form  >
+    <Form>
       <span>Job Detials</span>
       <div>
         {" "}
@@ -17,36 +19,45 @@ const workExperienceForm = ({ errors, touched, values }) => {
           name="jobTitle"
           options={workExperienceStaticData.jobTitleOptions}
           placeholder="Job Title"
+          touched={touched}
         />
         <WorkExperienceSelect
           as={workExperienceSelectComponent}
           name="jobField"
           options={workExperienceStaticData.jobFieldOpeions}
           placeholder="Job Field"
+          touched={touched}
         />
         <WorkExperienceSelect
           as={workExperienceSelectComponent}
+          touched={touched}
           name="jobLocation"
           options={workExperienceStaticData.jobLocationOpeions}
           placeholder="Job Location"
-          
-        /><div>
-        <DatePickerField
-          name="startDate"
-          currentlyWork={values.currentlyWork}
         />
-        {!values.currentlyWork && (
-          <DatePickerField
-            name="endDate"
-            currentlyWork={values.currentlyWork}
+        <div className="div_date"> 
+          <FieldDate
+            component={DateInput}
+            name={"startDate"}
+            placeholder={"Start Date"}
+            touched={touched}
+            errors={errors}
+            className="date"
           />
-        )}</div>
+         {!values.currentlyWork &&  <FieldDate
+            component={DateInput}
+            name={"endDate"}
+            placeholder={"End Date"}
+            touched={touched}
+            errors={errors}
+            className="date"
+          />}
+        </div>
         <FormInput
           type={"checkbox"}
           name={"currentlyWork"}
           touched={touched}
           errors={errors}
-
           className="checkbox"
           label="Currently Work There"
         />
@@ -57,7 +68,6 @@ const workExperienceForm = ({ errors, touched, values }) => {
           touched={touched}
           errors={errors}
           className="input"
-
         />
       </div>
       <span>Company Detials</span>
@@ -77,26 +87,29 @@ const workExperienceForm = ({ errors, touched, values }) => {
           placeholder={"Company Address"}
           touched={touched}
           className="input"
-
           errors={errors}
         />
-         
-          <WorkExperienceSelect
+        <WorkExperienceSelect
           as={workExperienceSelectComponent}
           name="companyIndustry"
           options={workExperienceStaticData.companyIndustryOptions}
+          touched={touched}
           placeholder="Company Industry"
-        />   <WorkExperienceSelect
-        as={workExperienceSelectComponent}
-        name="companySize"
-        options={workExperienceStaticData.companySizeOptions}
-        placeholder="company Size"
-      />   <WorkExperienceSelect
-      as={workExperienceSelectComponent}
-      name="companySector"
-      options={workExperienceStaticData.companySectorOptions}
-      placeholder="Company Sector "
-    />
+        />{" "}
+        <WorkExperienceSelect
+          as={workExperienceSelectComponent}
+          name="companySize"
+          touched={touched}
+          options={workExperienceStaticData.companySizeOptions}
+          placeholder="company Size"
+        />{" "}
+        <WorkExperienceSelect
+          as={workExperienceSelectComponent}
+          name="companySector"
+          options={workExperienceStaticData.companySectorOptions}
+          touched={touched}
+          placeholder="Company Sector "
+        />
       </div>
       <button type={"submit"} className="btn_submit">
         Save

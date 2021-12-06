@@ -6,6 +6,7 @@ import { WorkExperienceFormShema } from "../Uitls/Validation";
 import { addItem } from "../Redux/List/action";
 const FormikReact = () => {
   const dispatch = useDispatch();
+
   return (
     <div className="form">
       <Formik
@@ -30,7 +31,7 @@ const FormikReact = () => {
               id: Math.random() * 1000,
             })
           );
-          actions.resetForm({ values: "" });
+          actions.resetForm({ });
           actions.setSubmitting(false);
         }}
         validationSchema={WorkExperienceFormShema}

@@ -8,19 +8,21 @@ const workExperienceSelectComponent = ({
   options,
   name,
   placeholder,
-  touched
+  touched,
+  handleBlur,
+  onBlur
 }) => {
   return (
-    
     <div>
-   <Select
-        inputValue={value.value}
+      <Select
         onClick={() => setFieldTouched(name, true)}
         className="select_work_experinece"
         placeholder={placeholder}
-        defaultValue={placeholder}
+        defaultValue={null}
         isSearchable={true}
+        onBlur={onBlur(name)}
         name={name}
+        value={value[name] ? value.value : null}
         options={options}
         onChange={(value) => setFieldValue(name, value.value)}
       />

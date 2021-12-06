@@ -20,18 +20,12 @@ function App() {
           {list.map(({ values, id }) => (
             <div className="list_item" key={id}>
               {values.jobTitle}
-              <span className="date">
-                {values.startDate.getMonth() +
-                  1 +
-                  " / " +
-                  values.startDate.getFullYear()}
+              <span className="list_date">
+                {values.startDate}
                 {" - "}
                 {values.currentlyWork
                   ? "Recently"
-                  : values.endDate.getMonth() +
-                    1 +
-                    " / " +
-                    values.endDate.getFullYear()}
+                  : values.endDate}
               </span>
               <button onClick={() => handleEditItem(id)} className="edit_item">
                 Edit

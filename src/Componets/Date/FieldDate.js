@@ -1,21 +1,16 @@
 import { Field } from "formik";
 
-const FormInput = ({
-  type,
+const FieldDate = ({
   name,
   placeholder,
   errors,
   touched,
-  label,
-  component ,
+  component,
   className,
 }) => {
   return (
-    <div>
-
-      <label htmlFor={name}>{label}</label>
+      <div>
       <Field
-        type={type}
         name={name}
         placeholder={placeholder}
         autoComplete={"off"}
@@ -29,4 +24,4 @@ const FormInput = ({
   );
 };
 
-export default FormInput;
+export default FieldDate;

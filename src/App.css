@@ -61,7 +61,23 @@
   cursor: pointer;
 }
 .date {
-  margin: 20px
+  padding: 12px 20px;
+  margin: 8px 13px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+.list_Date{
+  margin: 8px 13px;
+  display: inline-block;
+}
+.div_date{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .list_item {
   font-size: 12px;
