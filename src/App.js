@@ -5,7 +5,6 @@ import { deleteItem } from "./Redux/List/action";
 function App() {
   const dispatch = useDispatch();
   const { list } = useSelector((state) => state.list);
-  console.log(list);
   
   const handleDeleteItem = (id) => {
     dispatch(deleteItem({ id: id }));

@@ -130,8 +130,8 @@ const workExperienceForm = ({ errors, touched, values }) => {
           />
         )}
       </div>
-      <button type={"submit"} className="btn_submit">
-        Save
+      <button type={"submit"} className="btn_save">
+       + SAVE & ADD ANOTHER RECORD
       </button>
     </Form>
   );

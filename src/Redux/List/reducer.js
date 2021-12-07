@@ -8,6 +8,7 @@ export const listReducer = (initialState = { list: [], error: "" }, action) => {
         ...initialState,
         list: [action.payload, ...initialState.list],
       };
+      
     case DELETE_ITEM:
       return {
         ...initialState,
