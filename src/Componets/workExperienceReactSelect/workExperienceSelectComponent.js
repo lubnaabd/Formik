@@ -2,7 +2,6 @@ import React from "react";
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 
-
 const WorkExperienceSelectComponent = ({
   setFieldTouched,
   value,
@@ -12,10 +11,11 @@ const WorkExperienceSelectComponent = ({
   placeholder,
   touched,
   handleBlur,
-  onBlur
+  onBlur,
 }) => {
-  const { editList, list,isEditing } = useSelector((state) => state.list);
-  {console.log(editList.values[name])
+  const { editList, list, isEditing } = useSelector((state) => state.list);
+  {
+    console.log(isEditing);
   }
   return (
     <div>
@@ -27,7 +27,9 @@ const WorkExperienceSelectComponent = ({
         isSearchable={true}
         onBlur={onBlur(name)}
         name={name}
-        value={value[name]? value.value :isEditing ?editList.values[name] : null}
+        value={
+          value[name] ? value.value : isEditing ? value.value : null
+        }
         options={options}
         onChange={(value) => setFieldValue(name, value.value)}
       />
