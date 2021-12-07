@@ -20,10 +20,7 @@ const FormikReact = () => {
         onSubmit={(values, actions) => {
           const newArray = [{ values: list, id: Math.random() * 1000 }];
           actions.setValues(newArray);
-          console.log(values);
-          console.log("values");
-          console.log(values);
-        }}
+         }}
         // validationSchema={WorkExperienceArrayShema}
       >
         {({ errors, touched }) => (
