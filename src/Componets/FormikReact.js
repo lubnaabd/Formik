@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik,Field } from "formik";
+import { Formik, Field } from "formik";
 import workExperienceForm from "./workExperienceForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,7 +20,7 @@ const FormikReact = () => {
         onSubmit={(values, actions) => {
           const newArray = [{ values: list, id: Math.random() * 1000 }];
           actions.setValues(newArray);
-         }}
+        }}
         // validationSchema={WorkExperienceArrayShema}
       >
         {({ errors, touched }) => (
@@ -57,14 +57,16 @@ const FormikReact = () => {
               children={workExperienceForm}
             />
             <Form>
-              <div >
-
-                <input type={"submit"} className="btn_submit">
+              <div>
+                <button type={"submit"} className="btn_submit">
                   Next
-                </input>
-             <>   {errors.workExperienceArray&& (
-            <div className={"error"}>{errors.workExperienceArray}</div>
-          )}</>
+                </button>
+                <>
+                  {" "}
+                  {errors.workExperienceArray && (
+                    <div className={"error"}>{errors.workExperienceArray}</div>
+                  )}
+                </>
               </div>
             </Form>
           </div>
