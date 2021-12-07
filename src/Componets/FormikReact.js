@@ -9,9 +9,10 @@ import {
 import { addItem } from "../Redux/List/action";
 import { Form } from "formik";
 
-const FormikReact = () => {
-  const { list } = useSelector((state) => state.list);
+const FormikReact = ({isEditing}) => {
+  const { list ,} = useSelector((state) => state.list);
   const dispatch = useDispatch();
+// console.log(isEditing);
 
   return (
     <div className="form">
@@ -27,6 +28,7 @@ const FormikReact = () => {
           <div>
             {console.log(errors)}{" "}
             <Formik
+            
               initialValues={{
                 jobTitle: "",
                 jobField: "",
@@ -55,6 +57,7 @@ const FormikReact = () => {
               }}
               validationSchema={WorkExperienceFormShema}
               children={workExperienceForm}
+
             />
             <Form>
               <div>

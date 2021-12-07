@@ -1,5 +1,5 @@
 import React from "react";
-import workExperienceSelectComponent from "./workExperienceReactSelect/workExperienceSelectComponent";
+import WorkExperienceSelectComponent from "./workExperienceReactSelect/workExperienceSelectComponent";
 import WorkExperienceSelect from "./workExperienceReactSelect/workExperienceSelect";
 import workExperienceStaticData from "./StaticData/staticData";
 import { Form } from "formik";
@@ -7,28 +7,30 @@ import FormInput from "./FormInput";
 import DateInput from "./Date/DateInput";
 import FieldDate from "./Date/FieldDate";
 
-const workExperienceForm = ({ errors, touched, values }) => {
+const workExperienceForm = ({ errors, touched, values,
+ }) => {
+   
   return (
     <Form>
       <span>Job Detials</span>
       <div>
         {" "}
         <WorkExperienceSelect
-          as={workExperienceSelectComponent}
+          as={WorkExperienceSelectComponent}
           name="jobTitle"
           options={workExperienceStaticData.jobTitleOptions}
           placeholder="Job Title"
           touched={touched}
         />
         <WorkExperienceSelect
-          as={workExperienceSelectComponent}
+          as={WorkExperienceSelectComponent}
           name="jobField"
           options={workExperienceStaticData.jobFieldOpeions}
           placeholder="Job Field"
           touched={touched}
         />
         <WorkExperienceSelect
-          as={workExperienceSelectComponent}
+          as={WorkExperienceSelectComponent}
           touched={touched}
           name="jobLocation"
           options={workExperienceStaticData.jobLocationOpeions}
@@ -91,21 +93,21 @@ const workExperienceForm = ({ errors, touched, values }) => {
           errors={errors}
         />
         <WorkExperienceSelect
-          as={workExperienceSelectComponent}
+          as={WorkExperienceSelectComponent}
           name="companyIndustry"
           options={workExperienceStaticData.companyIndustryOptions}
           touched={touched}
           placeholder="Company Industry"
         />{" "}
         <WorkExperienceSelect
-          as={workExperienceSelectComponent}
+          as={WorkExperienceSelectComponent}
           name="companySize"
           touched={touched}
           options={workExperienceStaticData.companySizeOptions}
           placeholder="company Size"
         />{" "}
         <WorkExperienceSelect
-          as={workExperienceSelectComponent}
+          as={WorkExperienceSelectComponent}
           name="companySector"
           options={workExperienceStaticData.companySectorOptions}
           touched={touched}
