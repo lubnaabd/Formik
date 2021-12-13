@@ -12,7 +12,7 @@ export const listReducer = (initialState = { list: [],editList:[],isisEditing:fa
       return {
         ...initialState,
         list: initialState.list.filter(
-          (elemnt) => elemnt.id !== action.payload.id
+          (elemnt) => elemnt.values.id !== action.payload.id
         ),
       };
     case GET_ITEM_BY_ID:

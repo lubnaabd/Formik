@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const WorkExperienceSelectComponent = ({
   setFieldTouched,
@@ -14,9 +14,6 @@ const WorkExperienceSelectComponent = ({
   onBlur,
 }) => {
   const { editList, list, isEditing } = useSelector((state) => state.list);
-  {
-    console.log(isEditing);
-  }
   return (
     <div>
       <Select

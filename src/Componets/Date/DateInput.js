@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const DateInput = (props) => {
+  const { isEditing } = useSelector((state) => state.list);
   const [isFoucs, setIsFocus] = useState(false);
   const {
     field: { name, onBlur, value },

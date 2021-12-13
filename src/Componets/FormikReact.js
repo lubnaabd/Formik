@@ -1,7 +1,7 @@
 import React from "react";
-import { Formik, Field } from "formik";
+import { Formik } from "formik";
 import workExperienceForm from "./workExperienceForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   WorkExperienceFormShema,
   WorkExperienceArrayShema,
@@ -9,26 +9,21 @@ import {
 import { addItem } from "../Redux/List/action";
 import { Form } from "formik";
 
-const FormikReact = ({isEditing}) => {
-  const { list ,} = useSelector((state) => state.list);
+const FormikReact = ({ isEditing }) => {
   const dispatch = useDispatch();
-// console.log(isEditing);
 
   return (
     <div className="form">
       <Formik
         initialValues={{ workExperienceArray: [] }}
+        validationSchema={WorkExperienceArrayShema}
         onSubmit={(values, actions) => {
-          const newArray = [{ values: list, id: Math.random() * 1000 }];
-          actions.setValues(newArray);
+          console.log(values);
         }}
-        // validationSchema={WorkExperienceArrayShema}
       >
-        {({ errors, touched }) => (
-          <div>
-            {console.log(errors)}{" "}
+        {({ errors, touched, setValues, submitForm }) => (
+          <>
             <Formik
-            
               initialValues={{
                 jobTitle: "",
                 jobField: "",
@@ -44,35 +39,40 @@ const FormikReact = ({isEditing}) => {
                 companySector: "",
                 reasonOfLeaving: "",
                 numberEmployees: "",
+                id: "",
               }}
               onSubmit={(values, actions) => {
-                dispatch(
-                  addItem({
-                    values: values,
-                    id: Math.random() * 1000,
-                  })
-                );
+                values.id = Math.random() * 1000;
+
+                dispatch(addItem({ values }));
                 actions.resetForm({});
                 actions.setSubmitting(false);
+                setValues((prev) => {
+                  return {
+                    workExperienceArray: [...prev.workExperienceArray, values],
+                  };
+                });
               }}
               validationSchema={WorkExperienceFormShema}
               children={workExperienceForm}
-
             />
             <Form>
               <div>
-                <button type={"submit"} className="btn_submit">
+                <button
+                  type={"buttn"}
+                  className="btn_submit"
+                  onClick={submitForm}
+                >
                   Next
                 </button>
                 <>
-                  {" "}
                   {errors.workExperienceArray && (
                     <div className={"error"}>{errors.workExperienceArray}</div>
                   )}
                 </>
               </div>
             </Form>
-          </div>
+          </>
         )}
       </Formik>
     </div>

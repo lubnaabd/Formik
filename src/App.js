@@ -26,8 +26,8 @@ function App() {
       <div className="App">
         <div className="list">
           {list &&
-            list.map(({ values, id }) => (
-              <div className="list_item" key={id}>
+            list.map(({ values }) => (
+              <div className="list_item" key={values.id}>
                 {values.jobTitle}
                 <span className="list_date">
                   {values.startDate}
@@ -35,13 +35,13 @@ function App() {
                   {values.currentlyWork ? "Recently" : values.endDate}
                 </span>
                 <button
-                  onClick={() => handleEditItem(id)}
+                  onClick={() => handleEditItem(values.id)}
                   className="edit_item"
                 >
                   Edit
                 </button>
                 <button
-                  onClick={() => handleDeleteItem(id)}
+                  onClick={() => handleDeleteItem(values.id)}
                   className="delete_item"
                 >
                   Delete

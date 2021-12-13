@@ -1,4 +1,5 @@
 import { Field } from "formik";
+import { useSelector } from "react-redux";
 
 const FormInput = ({
   type,
@@ -10,6 +11,8 @@ const FormInput = ({
   component ,
   className,
 }) => {
+  const { editList, list, isEditing } = useSelector((state) => state.list);
+
   return (
     <div>
 
@@ -17,6 +20,8 @@ const FormInput = ({
       <Field
         type={type}
         name={name}
+        // value={isEditing ? editList.values[name]:null }
+
         placeholder={placeholder}
         autoComplete={"off"}
         component={component}
